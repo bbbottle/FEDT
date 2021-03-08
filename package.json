@@ -1,0 +1,16 @@
+{
+  "name": "fedt",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:bbbottle/FEDT.git",
+  "author": "zjhou <z@zjh.im>",
+  "license": "MIT",
+  "scripts": {
+    "start": "vite",
+    "build": "vite biuld",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^2.0.5"
+  }
+}
