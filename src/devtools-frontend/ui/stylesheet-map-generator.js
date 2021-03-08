@@ -5,7 +5,7 @@ const stylesheets = moduleJSON.resources;
 const readStylesheetContent = (fileName) => {
   try {
     var data = fs.readFileSync(fileName, 'utf8');
-    return data.replace(/\s+/g, '');
+    return data; //.replace(/\s+/g, '');
   } catch(e) {
     console.log('Error:', e.stack);
   }

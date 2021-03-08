@@ -28,6 +28,8 @@
  * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
  * THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+import { UIStylesheetMap } from "./UIStylesheetMap";
+
 export const highlightedSearchResultClassName = 'highlighted-search-result';
 export const highlightedCurrentSearchResultClassName = 'current-search-result';
 
@@ -788,8 +790,6 @@ export function createShadowRootWithCoreStyles(element, cssFile, delegatesFocus)
 export function _injectCoreStyles(root) {
   appendStyle(root, 'ui/inspectorCommon.css');
   appendStyle(root, 'ui/textButton.css');
-  UI.themeSupport.injectHighlightStyleSheets(root);
-  UI.themeSupport.injectCustomStyleSheets(root);
 }
 
 /**
@@ -1236,23 +1236,8 @@ export class LongClickController extends Common.Object {
 
 /**
  * @param {!Document} document
- * @param {!Common.Setting} themeSetting
  */
-export function initializeUIUtils(document, themeSetting) {
-  document.body.classList.toggle('inactive', !document.hasFocus());
-  document.defaultView.addEventListener('focus', _windowFocused.bind(UI, document), false);
-  document.defaultView.addEventListener('blur', _windowBlurred.bind(UI, document), false);
-  document.addEventListener('focus', _focusChanged.bind(UI), true);
-  document.addEventListener('keydown', event => {
-    UI._keyboardFocus = true;
-    document.defaultView.requestAnimationFrame(() => void(UI._keyboardFocus = false));
-  }, true);
-
-  if (!UI.themeSupport) {
-    UI.themeSupport = new ThemeSupport(themeSetting);
-  }
-  UI.themeSupport.applyTheme(document);
-
+export function initializeUIUtils(document) {
   const body = /** @type {!Element} */ (document.body);
   appendStyle(body, 'ui/inspectorStyle.css');
   UI.GlassPane.setContainer(/** @type {!Element} */ (document.body));
@@ -1383,20 +1368,13 @@ export function createSlider(min, max, tabIndex) {
  * @suppressGlobalPropertiesCheck
  */
 export function appendStyle(node, cssFile) {
-  const content = Root.Runtime.cachedResources[cssFile] || '';
+  const content = UIStylesheetMap[cssFile] || '';
   if (!content) {
     console.error(cssFile + ' not preloaded. Check module.json');
   }
   let styleElement = createElement('style');
   styleElement.textContent = content;
   node.appendChild(styleElement);
-
-  const themeStyleSheet = UI.themeSupport.themeStyleSheet(cssFile, content);
-  if (themeStyleSheet) {
-    styleElement = createElement('style');
-    styleElement.textContent = themeStyleSheet + '\n' + Root.Runtime.resolveSourceURL(cssFile + '.theme');
-    node.appendChild(styleElement);
-  }
 }
 
 export class CheckboxLabel extends HTMLSpanElement {
@@ -1814,9 +1792,6 @@ export class ThemeSupport {
   injectHighlightStyleSheets(element) {
     this._injectingStyleSheet = true;
     appendStyle(element, 'ui/inspectorSyntaxHighlight.css');
-    if (this._themeName === 'dark') {
-      appendStyle(element, 'ui/inspectorSyntaxHighlightDark.css');
-    }
     this._injectingStyleSheet = false;
   }
 
