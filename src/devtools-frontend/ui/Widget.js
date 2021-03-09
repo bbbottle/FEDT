@@ -483,6 +483,10 @@ export default class Widget extends Common.Object {
     UI.appendStyle(this._isWebComponent ? this._shadowRoot : this.element, cssFile);
   }
 
+  injectStyleText(styleText) {
+    UI.appendStyleContent(this._isWebComponent ? this._shadowRoot : this.element, styleText);
+  }
+
   printWidgetHierarchy() {
     const lines = [];
     this._collectWidgetHierarchy('', lines);

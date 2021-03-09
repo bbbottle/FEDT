@@ -33,6 +33,21 @@ class HelloWorldView extends UI.VBox {
 
   createHelloView = () => {
     const hv = new UI.VBox();
+    const hvToolbarContainer = hv.element.createChild('div', 'hello-toolbar-container');
+    hv.injectStyleText(`
+        .hello-toolbar-container {
+            display: flex;
+            flex: none;
+        }
+        .hello-toolbar-container > .toolbar {
+            background-color: var(--toolbar-bg-color);
+            border-bottom: var(--divider-border);
+        }
+        .hello-main-toolbar {
+            flex: 1 1 auto;
+        }
+    `);
+
     const mainView = new UI.EmptyWidget(':)');
     mainView.appendLink('https://google.com', 'google.com')
 
@@ -46,6 +61,13 @@ class HelloWorldView extends UI.VBox {
     splitWidget.setMainWidget(mainView);
     splitWidget.setSidebarWidget(sideNav);
     splitWidget.show(hv.element);
+
+    const toolbar = new UI.Toolbar('hello-main-toolbar', hvToolbarContainer);
+    const rightToolbar = new UI.Toolbar('', hvToolbarContainer);
+
+    toolbar.appendToolbarItem(splitWidget.createShowHideSidebarButton('hello sidebar'));
+    toolbar.appendSeparator();
+    rightToolbar.appendSeparator();
     return hv;
   }
 
