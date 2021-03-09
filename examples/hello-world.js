@@ -18,7 +18,7 @@ class HelloWorldView extends UI.VBox {
       new UI.Widget(),
       'world',
       true,
-      false,
+      true,
       1
     );
     this._tabbedPane.show(this.element);
