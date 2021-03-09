@@ -68,6 +68,10 @@ class HelloWorldView extends UI.VBox {
     toolbar.appendToolbarItem(splitWidget.createShowHideSidebarButton('hello sidebar'));
     toolbar.appendSeparator();
     rightToolbar.appendSeparator();
+    rightToolbar.appendToolbarItem(new UI.ToolbarMenuButton((contextMenu) => {
+      contextMenu.defaultSection().appendItem('hello')
+      contextMenu.defaultSection().appendItem('test')
+    }));
     return hv;
   }
 
