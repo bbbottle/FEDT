@@ -127,15 +127,9 @@ export default class InspectorView extends UI.VBox {
     return null;
   }
 
-  createToolbars(leftToolbarWords= [], rightToolbarWords= []) {
-    leftToolbarWords.forEach((w) => {
-      this._tabbedPane.leftToolbar().appendText(w);
-    })
-    rightToolbarWords.forEach((w) => {
-      this._tabbedPane.rightToolbar().appendText(w);
-    })
-    // this._tabbedPane.leftToolbar().appendItemsAtLocation('main-toolbar-left');
-    // this._tabbedPane.rightToolbar().appendItemsAtLocation('main-toolbar-right');
+  createToolbars() {
+    this._tabbedPane.leftToolbar().appendItemsAtLocation('main-toolbar-left');
+    this._tabbedPane.rightToolbar().appendItemsAtLocation('main-toolbar-right');
   }
 
   /**
