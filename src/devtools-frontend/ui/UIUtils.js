@@ -790,6 +790,7 @@ export function createShadowRootWithCoreStyles(element, cssFile, delegatesFocus)
 export function _injectCoreStyles(root) {
   appendStyle(root, 'ui/inspectorCommon.css');
   appendStyle(root, 'ui/textButton.css');
+  appendStyle(root, 'ui/inspectorSyntaxHighlight.css');
 }
 
 /**

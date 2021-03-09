@@ -53,10 +53,11 @@ export default class EmptyWidget extends UI.VBox {
 
   /**
    * @param {string} link
+   * @param {string} linkText
    * @return {!Node}
    */
-  appendLink(link) {
-    return this._contentElement.appendChild(UI.XLink.create(link, 'Learn more'));
+  appendLink(link, linkText) {
+    return this._contentElement.appendChild(UI.XLink.create(link, linkText || 'Learn more'));
   }
 
   /**
