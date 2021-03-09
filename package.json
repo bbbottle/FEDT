@@ -6,9 +6,7 @@
   "author": "zjhou <z@zjh.im>",
   "license": "MIT",
   "scripts": {
-    "start": "vite",
-    "build": "vite biuld",
-    "preview": "vite preview"
+    "start": "vite"
   },
   "devDependencies": {
     "vite": "^2.0.5"
