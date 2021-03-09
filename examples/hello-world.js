@@ -1,3 +1,5 @@
+import {SideNav} from "./side-nav";
+
 class HelloWorldView extends UI.VBox {
   constructor() {
     super();
@@ -30,8 +32,20 @@ class HelloWorldView extends UI.VBox {
   }
 
   createHelloView = () => {
-    const hv = new UI.EmptyWidget('HELLO');
-    hv.appendLink('https://google.com', 'google.com')
+    const hv = new UI.VBox();
+    const mainView = new UI.EmptyWidget(':)');
+    mainView.appendLink('https://google.com', 'google.com')
+
+    const sideNav = new SideNav();
+    const splitWidget = new UI.SplitWidget(
+      true /* isVertical */,
+      false /* secondIsSidebar */,
+      'console.sidebar.width',
+      200
+    );
+    splitWidget.setMainWidget(mainView);
+    splitWidget.setSidebarWidget(sideNav);
+    splitWidget.show(hv.element);
     return hv;
   }
 

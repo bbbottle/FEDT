@@ -1378,6 +1378,16 @@ export function appendStyle(node, cssFile) {
   node.appendChild(styleElement);
 }
 
+/**
+ * @param {!Node} node
+ * @param {string} styleTextContent
+ */
+export function appendStyleContent(node, styleTextContent) {
+  let styleElement = createElement('style');
+  styleElement.textContent = styleTextContent;
+  node.appendChild(styleElement);
+}
+
 export class CheckboxLabel extends HTMLSpanElement {
   constructor() {
     super();
@@ -2322,6 +2332,7 @@ UI.createRadioLabel = createRadioLabel;
 UI.createIconLabel = createIconLabel;
 UI.createSlider = createSlider;
 UI.appendStyle = appendStyle;
+UI.appendStyleContent = appendStyleContent;
 UI.bindInput = bindInput;
 UI.trimText = trimText;
 UI.trimTextMiddle = trimTextMiddle;

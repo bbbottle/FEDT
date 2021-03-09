@@ -371,6 +371,10 @@ export class TreeOutlineInShadow extends TreeOutline {
     UI.appendStyle(this._shadowRoot, cssFile);
   }
 
+  injectStyle(textContent) {
+    UI.appendStyleContent(this._shadowRoot, textContent)
+  }
+
   hideOverflow() {
     this._disclosureElement.classList.add('tree-outline-disclosure-hide-overflow');
   }
