@@ -4,9 +4,9 @@
  <img src="https://img.shields.io/node/v/vite" alt="vite" />
 </p>
 
-# FEDT
+# Intro
 
-FEDT is short for **F**(ront) **E**(nd) of **D**(ev) **T**(ools).
+FEDT is short for **F**(ront) **E**(nd) of **D**(ev) **T**(ools). As a front end developer, a heavy user of [Chrome DevTools](https://github.com/ChromeDevTools/devtools-frontend), I want to bring dev tools' ui to the front desk and consume it in other web app project.
 
 ## RUN
 
