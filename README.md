@@ -6,7 +6,7 @@
 
 # Intro
 
-FEDT is short for **F**(ront) **E**(nd) of **D**(ev) **T**(ools). As a front end developer, a heavy user of [Chrome DevTools](https://github.com/ChromeDevTools/devtools-frontend), I want to bring dev tools' ui to the front desk and consume it in other web app project.
+FEDT is short for **F**(ront) **E**(nd) of **D**(ev) **T**(ools). As a front end developer, a heavy user of [Chrome DevTools](https://github.com/ChromeDevTools/devtools-frontend), I want to bring dev tools' ui to the stage center instead of leaving it behind the curtain.
 
 ## RUN
 
